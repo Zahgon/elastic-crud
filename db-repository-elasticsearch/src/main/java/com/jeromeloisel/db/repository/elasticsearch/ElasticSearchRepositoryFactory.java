@@ -12,45 +12,26 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
 import org.elasticsearch.client.Client;
-
 import java.util.concurrent.atomic.AtomicReference;
-
 import static com.google.common.base.Preconditions.checkState;
 import static lombok.AccessLevel.PRIVATE;
 import static org.elasticsearch.action.support.WriteRequest.RefreshPolicy.IMMEDIATE;
 
 @AllArgsConstructor
-@FieldDefaults(level=PRIVATE, makeFinal = true)
+@FieldDefaults(level = PRIVATE, makeFinal = true)
 public final class ElasticSearchRepositoryFactory implements DatabaseRepositoryFactory {
-  @NonNull
-  JsonSerializationFactory factory;
-  @NonNull
-  Client client;
-  @NonNull
-  DatabaseScrollingFactory scrolling;
 
-  @Override
-  public <T extends Entity> DatabaseRepository<T> create(final Class<T> clazz) {
-    checkState(
-      clazz.isAnnotationPresent(Document.class),
-      "%s must be annotated with @Document",
-      clazz.getName());
+    @NonNull
+    JsonSerializationFactory factory;
 
-    final Document document = clazz.getDeclaredAnnotation(Document.class);
-    final JsonSerializer<T> serializer = factory.serializer(clazz);
-    final JsonDeserializer<T> deserializer = factory.deserializer(clazz);
+    @NonNull
+    Client client;
 
-    final String index = document.indexName();
-    final String type = document.type();
+    @NonNull
+    DatabaseScrollingFactory scrolling;
 
-    return new ElasticSearchRepository<>(
-      index,
-      type,
-      client,
-      serializer,
-      deserializer,
-      scrolling,
-      new AtomicReference<>(IMMEDIATE)
-    );
-  }
+    @Override
+    public <T extends Entity> DatabaseRepository<T> create(final Class<T> clazz) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

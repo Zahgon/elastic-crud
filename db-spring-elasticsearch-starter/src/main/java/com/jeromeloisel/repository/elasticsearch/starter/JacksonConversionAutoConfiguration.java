@@ -6,26 +6,24 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jeromeloisel.db.conversion.api.JsonSerializationFactory;
 import com.jeromeloisel.db.conversion.jackson.JacksonSerializationFactory;
 
 /**
  * Jackson Json Conversion autoconfiguration.
- * 
- * @author jerome
  *
+ * @author jerome
  */
 @Configuration
 @ConditionalOnClass(ObjectMapper.class)
 public class JacksonConversionAutoConfiguration {
 
-  @Bean
-  @Autowired
-  @ConditionalOnBean(ObjectMapper.class)
-  @ConditionalOnMissingBean(JsonSerializationFactory.class)
-  JsonSerializationFactory jsonSerializationFactory(final ObjectMapper mapper) {
-    return new JacksonSerializationFactory(mapper);
-  }
+    @Bean
+    @Autowired
+    @ConditionalOnBean(ObjectMapper.class)
+    @ConditionalOnMissingBean(JsonSerializationFactory.class)
+    JsonSerializationFactory jsonSerializationFactory(final ObjectMapper mapper) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -12,20 +12,16 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Elasticsearch Repository autoconfiguration.
- * 
- * @author jerome
  *
+ * @author jerome
  */
 @Configuration
 public class ElasticSearchRepositoryFactoryAutoConfiguration {
 
-  @Bean
-  @ConditionalOnMissingBean(DatabaseRepositoryFactory.class)
-  @ConditionalOnBean(value={Client.class, JsonSerializationFactory.class, DatabaseScrollingFactory.class})
-  DatabaseRepositoryFactory databaseRepositoryFactory(
-    final Client client,
-    final JsonSerializationFactory serialization,
-    final DatabaseScrollingFactory factory) {
-    return new ElasticSearchRepositoryFactory(serialization, client, factory);
-  }
+    @Bean
+    @ConditionalOnMissingBean(DatabaseRepositoryFactory.class)
+    @ConditionalOnBean(value = { Client.class, JsonSerializationFactory.class, DatabaseScrollingFactory.class })
+    DatabaseRepositoryFactory databaseRepositoryFactory(final Client client, final JsonSerializationFactory serialization, final DatabaseScrollingFactory factory) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

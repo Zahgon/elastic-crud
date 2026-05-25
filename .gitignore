@@ -8,3 +8,7 @@ dependency-reduced-pom.xml
 buildNumber.properties
 *.iml
 .idea/
+.aider*
+logs/
+.commit0_scripts/
+.github/workflows/
